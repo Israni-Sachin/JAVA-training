@@ -10,11 +10,14 @@ class ext implements interClass{
     public void again(){
         System.out.println("Hello again!");
     }
+    public void again(String a){
+        System.out.println("Hello again override!");
+    }
 }
 class inter{
     public static void main(String[] args){
         ext obj=new ext();
         obj.hello();
-        obj.again();
+        obj.again("sachin");
     }
 }
