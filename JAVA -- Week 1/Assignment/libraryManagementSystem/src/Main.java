@@ -14,7 +14,10 @@ class Book {
     }
 
     public String toString() {
-        return String.format("Title: %s | Author: %s | Genre: %s | Available Copies: %d",
+        return String.format("Title: %s \n" +
+                        "Author: %s \n" +
+                        "Genre: %s \n" +
+                        "Available Copies: %d",
                 title, author, genre, copies);
     }
 }
