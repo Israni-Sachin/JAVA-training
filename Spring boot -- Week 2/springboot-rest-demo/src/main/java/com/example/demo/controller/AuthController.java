@@ -44,7 +44,7 @@ public class AuthController {
 
         Optional<User> validUser = userService.validateUser(user.getEmail(), user.getPassword());
         if (validUser.isPresent()) {
-            String token = jwtUtil.generateToken(user.getEmail());
+            String token = jwtUtil.generateToken(validUser.get());
             return ResponseEntity.ok(token);
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");

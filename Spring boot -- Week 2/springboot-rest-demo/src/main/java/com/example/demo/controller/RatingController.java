@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/ratings")
+@RequestMapping("/user/ratings")
 public class RatingController {
 
     private final RatingService ratingService;
@@ -45,14 +45,14 @@ public class RatingController {
 //        return userRepository.save(user);
 //    }
 
-    @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
-    public List<Rating> getAllRatings(Principal principal) throws Exception{
-        return ratingService.getAllRatings(principal.getName());
-    }
+//    @GetMapping
+//    @PreAuthorize("hasRole('ADMIN')")
+//    public List<Rating> getAllRatings(Principal principal) throws Exception{
+//        return ratingService.getAllRatings(principal.getName());
+//    }
 
     @PostMapping
-    @PreAuthorize("hasRole('USER')")
+//    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> createRating(@RequestBody Rating rating, Principal principal) {
         try {
             Rating saved = ratingService.createRating(rating, principal.getName());
@@ -62,22 +62,22 @@ public class RatingController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/filter")
-    public List<Rating> filterRatings(
-            @RequestParam(required = false) Integer ambiance,
-            @RequestParam(required = false) Integer food,
-            @RequestParam(required = false) Integer service,
-            @RequestParam(required = false) Integer cleanliness,
-            @RequestParam(required = false) Integer drinks
-    ) {
-        return ratingService.filterRatings(ambiance, food, service, cleanliness, drinks);
-    }
+//    @GetMapping("/filter")
+//    @PreAuthorize("hasRole('ADMIN')")
+//    public List<Rating> filterRatings(
+//            @RequestParam(required = false) Integer ambiance,
+//            @RequestParam(required = false) Integer food,
+//            @RequestParam(required = false) Integer service,
+//            @RequestParam(required = false) Integer cleanliness,
+//            @RequestParam(required = false) Integer drinks
+//    ) {
+//        return ratingService.filterRatings(ambiance, food, service, cleanliness, drinks);
+//    }
 
     // View average per category and overall
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/report")
-    public Map<String, Double> getRatingReport() {
-        return ratingService.getRatingsReport();
-    }
+//    @GetMapping("/report")
+//    @PreAuthorize("hasRole('ADMIN')")
+//    public Map<String, Double> getRatingReport() {
+//        return ratingService.getRatingsReport();
+//    }
 }
